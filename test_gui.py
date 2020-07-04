@@ -145,43 +145,43 @@ def load_net(checkpoint):
 
 from threading import Thread, Lock
 
-class WebcamVideoStream :
-    def __init__(self, src=0, width=640, height=480) :
-        self.stream = cv2.VideoCapture(src)
-        self.stream.set(cv2.CAP_PROP_FRAME_WIDTH, width)
-        self.stream.set(cv2.CAP_PROP_FRAME_HEIGHT, height)
-        (self.grabbed, self.frame) = self.stream.read()
-        self.started = False
-        self.read_lock = Lock()
+# class WebcamVideoStream :
+#     def __init__(self, src=0, width=640, height=480) :
+#         self.stream = cv2.VideoCapture(src)
+#         self.stream.set(cv2.CAP_PROP_FRAME_WIDTH, width)
+#         self.stream.set(cv2.CAP_PROP_FRAME_HEIGHT, height)
+#         (self.grabbed, self.frame) = self.stream.read()
+#         self.started = False
+#         self.read_lock = Lock()
 
-    def start(self) :
-        if self.started :
-            print ("already started!!")
-            return None
-        self.started = True
-        self.thread = Thread(target=self.update, args=())
-        self.thread.start()
-        return self
+#     def start(self) :
+#         if self.started :
+#             print ("already started!!")
+#             return None
+#         self.started = True
+#         self.thread = Thread(target=self.update, args=())
+#         self.thread.start()
+#         return self
 
-    def update(self) :
-        while self.started :
-            (grabbed, frame) = self.stream.read()
-            self.read_lock.acquire()
-            self.grabbed, self.frame = grabbed, frame
-            self.read_lock.release()
+#     def update(self) :
+#         while self.started :
+#             (grabbed, frame) = self.stream.read()
+#             self.read_lock.acquire()
+#             self.grabbed, self.frame = grabbed, frame
+#             self.read_lock.release()
 
-    def read(self) :
-        self.read_lock.acquire()
-        frame = self.frame.copy()
-        self.read_lock.release()
-        return frame
+#     def read(self) :
+#         self.read_lock.acquire()
+#         frame = self.frame.copy()
+#         self.read_lock.release()
+#         return frame
 
-    def stop(self) :
-        self.started = False
-        self.thread.join()
+#     def stop(self) :
+#         self.started = False
+#         self.thread.join()
 
-    def __exit__(self, exc_type, exc_value, traceback) :
-        self.stream.release()
+#     def __exit__(self, exc_type, exc_value, traceback) :
+#         self.stream.release()
 
 
 
@@ -373,7 +373,7 @@ if __name__ == '__main__':
             max_added_val = 50
             random_entropy_direction_mult = (self.slider.value() - self.slider.maximum() / 2) / (self.slider.maximum())
             random_entropy = self.random_entropy + max_added_val * self.random_entropy_direction * random_entropy_direction_mult
-
+            
             self.in_im_path, self.res_im_path = run_net_work(img_path=self.img_path, entropy=random_entropy,
                                                              use_face_locations=self.use_face_locations,
                                                              face_increes_by_dev_ratio=self.face_increes_by_dev_ratio)
