@@ -6,4 +6,4 @@ spec:
     cpu: False
     gpu: True    
 build_steps:
-    - conda env create -f conda_requirements.yml
+    - pip install -r requirements.txt
