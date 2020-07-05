@@ -164,7 +164,10 @@ def run_net_work(img, entropy, config=config, use_face_locations=False, face_inc
     #return in_im_path, out_im_path
 
 
-
+available_configs = {
+    os.path.basename(filename).split('_')[0] : filename
+    for filename in glob.glob('configs/*yaml')
+}
 
 
 
@@ -172,11 +175,20 @@ def run_net_work(img, entropy, config=config, use_face_locations=False, face_inc
 def setup(opts):
     pass # return ct.setup_cartoonize()
     
-@runway.command('translate', inputs={'image': runway.image}, outputs={'image': runway.image})
+@runway.command('translate', 
+        inputs={
+            'image': runway.image,
+            'config': category(
+                choices=list(available_configs.keys()), 
+                default=list(available_configs.keys())[0], 
+                description='Network to apply'),
+        }, 
+        outputs={'image': runway.image})
 def translate(net, inputs):
     print("Starting")
     #output = ct.cartoonize(inputs['image'], "test_code/saved_models", net)
-    config = get_config(selected_config)
+    config_filename = available_configs[inputs['config']]
+    config = get_config(config_filename)
     #input_dim = config['input_dim_a'] if opts.a2b else config['input_dim_b']
     #council_size = config['council']['council_size']
 

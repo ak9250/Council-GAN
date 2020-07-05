@@ -6,8 +6,8 @@ spec:
     cpu: False
     gpu: True    
 build_steps:
+    - bash ./scripts/download.sh pretrain_selfie_to_anime
     - apt-get -y update
     - apt-get install -y cmake
     - pip install -v --install-option="--no" --install-option="DLIB_USE_CUDA" dlib
     - pip install -r requirements.txt
-    
