@@ -10,3 +10,4 @@ build_steps:
     - apt-get install -y cmake
     - pip install -v --install-option="--no" --install-option="DLIB_USE_CUDA" dlib
     - pip install -r requirements.txt
+    
