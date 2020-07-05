@@ -1,6 +1,5 @@
 import runway
 import numpy as np
-import tensorflow as tf
 from PIL import Image
 from test_gui import torch, Variable, transforms, face_recognition, encode_s, decode_s
 import yaml
