@@ -7,6 +7,3 @@ spec:
     gpu: True    
 build_steps:
     - conda env create -f conda_requirements.yml
-    - pip install runway-python tensorflow scikit-image==0.14.5 opencv-python tqdm
-    - if_cpu: pip install tensorflow
-    - if_gpu: pip install tensorflow-gpu==1.15
