@@ -1,4 +1,7 @@
+import os
+import glob
 import runway
+from runway import image, category, number
 import numpy as np
 from PIL import Image
 from test_gui import torch, Variable, transforms, face_recognition, encode_s, decode_s
