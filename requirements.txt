@@ -1,0 +1,6 @@
+face-recognition==1.3.0
+face-recognition-models==0.3.0
+torch
+runway-python 
+opencv-python
+torchnet==0.0.4
