@@ -1,10 +1,7 @@
 import runway
 import numpy as np
 import tensorflow as tf
-from test_code import network
-import test_code.cartoonize as cart
 from PIL import Image
-from test_code import cartoonize as ct
 from test_gui import torch, Variable, transforms, face_recognition, encode_s, decode_s
 import yaml
 
