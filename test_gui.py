@@ -80,6 +80,7 @@ torch.manual_seed(opts.seed)
 torch.cuda.manual_seed(opts.seed)
 
 # Load experiment setting
+print("Loading config from:", opts.config)
 config = get_config(opts.config)
 input_dim = config['input_dim_a'] if opts.a2b else config['input_dim_b']
 council_size = config['council']['council_size']
